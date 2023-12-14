@@ -10,7 +10,7 @@ void add_1(stack_t **stacks, unsigned int line_num)
 	int Sum;
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
-		print_error(8, line_num, "add_1");
+		print_errors(8, line_num, "add_1");
 
 	(*stacks) = (*stacks)->next;
 	Sum = (*stacks)->n + (*stacks)->prev->n;
@@ -42,7 +42,7 @@ void sub_1(stack_t **stacks, unsigned int line_num)
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
 
-		print_error(8, line_num, "sub_1");
+		print_errors(8, line_num, "sub_1");
 
 
 	(*stacks) = (*stacks)->next;
@@ -63,10 +63,10 @@ void div_nodes(stack_t **stacks, unsigned int line_num)
 	int division;
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
-		print_error(8, line_num, "div");
+		print_errors(8, line_num, "div");
 
 	if ((*stacks)->n == 0)
-		print_error(9, line_num);
+		print_errors(9, line_num);
 	(*stacks) = (*stacks)->next;
 	division = (*stacks)->n / (*stacks)->prev->n;
 	(*stacks)->n = division;
@@ -85,7 +85,7 @@ void mul(stack_t **stacks, unsigned int line_num)
 	int product;
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
-		print_error(8, line_num, "mul");
+		print_errors(8, line_num, "mul");
 
 	(*stacks) = (*stacks)->next;
 	product = (*stacks)->n * (*stacks)->prev->n;

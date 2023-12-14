@@ -57,7 +57,7 @@ void print_the_entire_stacks(stack_t **stacks,
 void print_stachs_tops(stack_t **stacks, unsigned int line_num)
 {
 	if (stacks == NULL || *stacks == NULL)
-		print_error(6, line_num);
+		print_errors(6, line_num);
 	printf("%d\n", (*stacks)->n);
 }
 
@@ -73,7 +73,7 @@ void pop(stack_t **stacks, unsigned int line_num)
 	stack_t *temp;
 
 	if (stacks == NULL || *stacks == NULL)
-		print_error(7, line_num);
+		print_errors(7, line_num);
 
 	temp = *stacks;
 	*stacks = temp->next;
@@ -94,7 +94,7 @@ void Swaps(stack_t **stacks, unsigned int line_num)
 	stack_t *temp;
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
-		print_error(8, line_num, "Swaps");
+		print_errors(8, line_num, "Swaps");
 	temp = (*stacks)->next;
 	(*stacks)->next = temp->next;
 	if (temp->next != NULL)

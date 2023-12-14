@@ -29,7 +29,7 @@ stack_t *create_node(int data)
 
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
-		print_error(4);
+		print_errors(4);
 	node->next = NULL;
 	node->prev = NULL;
 	node->n = data;
@@ -39,20 +39,20 @@ stack_t *create_node(int data)
 /**
  * call_function - Calls the requred fun
  * @func: Pointer to the function that is called.
- * @op_code: string representing the op_code.
+ * @opcode: string representing the opcode.
  * @num: a string representing a numeric value.
  * @line_number: line number for the instruction.
  * @data_structure: If 0, nodes will be added as a stack.
  * If 1, nodes will be added as a queue.
  */
-void call_function(opcode_function func, char *op_code, char *num,
+void call_function(opcode_function func, char *opcode, char *num,
 		int line_number, int data_structure)
 {
 	stack_t *node;
 	int multiplier = 1;
 	int q;
 
-	if (strcmp(op_code, "push") == 0)
+	if (strcmp(opcode, "push") == 0)
 	{
 		if (num != NULL && num[0] == '-')
 		{
@@ -60,11 +60,11 @@ void call_function(opcode_function func, char *op_code, char *num,
 			multiplier = -1;
 		}
 		if (num == NULL)
-			print_error(5, line_number);
+			print_errors(5, line_number);
 		for (q = 0; num[q] != '\0'; q++)
 		{
 			if (isdigit(num[q]) == 0)
-				print_error(5, line_number);
+				print_errors(5, line_number);
 		}
 		node = create_node(atoi(num) * multiplier);
 		if (data_structure == 0)
@@ -79,7 +79,7 @@ void call_function(opcode_function func, char *op_code, char *num,
 /**
  * add_to_queue - Adds a node to the queue.
  * @new_node: Pointer to the new node.
- * @line_number: line number of the op_code.
+ * @line_number: line number of the opcode.
  */
 void add_to_queue(stack_t **new_node, unsigned int line_number)
 {
@@ -103,9 +103,9 @@ void add_to_queue(stack_t **new_node, unsigned int line_number)
 }
 
 /**
- * find_function - find the appropriate function for the op_code
- * @op_code: op_code
- * @op_code_arg: argument of op_code
+ * find_function - find the appropriate function for the opcode
+ * @opcode: opcode
+ * @op_code_arg: argument of opcode
  * @data_structure: If 0, nodes will be added as a stack.
  * If 1, nodes will be added as a queue.
  * @line_number: line number
@@ -113,7 +113,7 @@ void add_to_queue(stack_t **new_node, unsigned int line_number)
  * Return: void
  */
 
-void find_function(char *op_code, char *op_code_arg,
+void find_function(char *opcode, char *op_code_arg,
 		int line_number, int data_structure)
 {
 	int q;
@@ -138,19 +138,19 @@ void find_function(char *op_code, char *op_code_arg,
 		{NULL, NULL}
 	};
 
-	if (op_code[0] == '#')
+	if (opcode[0] == '#')
 		return;
 
-	for (multiplier = 1, q = 0; function_list[q].op_code != NULL; q++)
+	for (multiplier = 1, q = 0; function_list[q].opcode != NULL; q++)
 	{
-		if (strcmp(op_code, function_list[q].op_code) == 0)
+		if (strcmp(opcode, function_list[q].opcode) == 0)
 		{
-			call_function(function_list[q].f, op_code, op_code_arg,
+			call_function(function_list[q].f, opcode, op_code_arg,
 					line_number, data_structure);
 			multiplier = 0;
 		}
 	}
 	if (multiplier == 1)
-		print_error(3, line_number, op_code);
+		print_errors(3, line_number, opcode);
 }
 

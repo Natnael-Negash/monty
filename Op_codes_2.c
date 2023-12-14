@@ -12,11 +12,11 @@ void mod(stack_t **stacks, unsigned int line_num)
 
 	if (stacks == NULL || *stacks == NULL || (*stacks)->next == NULL)
 
-		print_error(8, line_num, "mod");
+		print_errors(8, line_num, "mod");
 
 
 	if ((*stacks)->n == 0)
-		print_error(9, line_num);
+		print_errors(9, line_num);
 	(*stacks) = (*stacks)->next;
 	modulus = (*stacks)->n % (*stacks)->prev->n;
 	(*stacks)->n = modulus;

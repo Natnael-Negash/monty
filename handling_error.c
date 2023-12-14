@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * print_error - Prints appropriate error messages
+ * print_errors - Prints appropriate error messages
  * determined by the error code.
  * @eror_codes: The error codes are the following:
  * (1) => The user does not give any file or gives more than
@@ -12,7 +12,7 @@
  * (5) => The parameter passed to the instruction "push" is not an int.
 **/
 
-void print_error(int eror_codes, ...)
+void print_errors(int eror_codes, ...)
 {
 	va_list args;
 	char *ops_code;
@@ -54,14 +54,14 @@ void print_error(int eror_codes, ...)
 
 
 /**
- * print_error - Prints errors depending on the error
+ * print_errors - Prints errors depending on the error
  * @eror_codes: The error codes are the following:
  * (6) => the stack is empty for pint
  * (7) => the stack is empty for po
  * (8) => the stack is too short for operation
  * (9) => Division by zero.
  */
-void print_error(int eror_codes, ...)
+void print_errors(int eror_codes, ...)
 {
 	va_list args;
 	char *ops_code;

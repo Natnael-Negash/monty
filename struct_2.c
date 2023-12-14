@@ -17,7 +17,7 @@ int Tokenize_q(char *input, int line_number, int data_structure)
 	const char *delimiter = "\n ";
 
 	if (input == NULL)
-		print_error(4);
+		print_errors(4);
 
 	opcode = strtok(input, delimiter);
 	if (opcode == NULL)
@@ -66,7 +66,7 @@ void open_file(char *path_name)
 	FILE *fd = fopen(path_name, "r");
 
 	if (path_name == NULL || fd == NULL)
-		print_error(2, path_name);
+		print_errors(2, path_name);
 
 	read_input_in_file(fd);
 	fclose(fd);
