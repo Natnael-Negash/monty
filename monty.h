@@ -76,7 +76,7 @@ void rotr(stack_t **stack, unsigned int line_number);
 
 /** Print errors **/
 void print_errors(int error_code, ...);
-void print_errors(int error_code, ...);
+void print_eror(int error_code, ...);
 void print_more_eror(int error_code, ...);
 
 #endif

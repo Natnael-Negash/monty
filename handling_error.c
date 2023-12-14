@@ -61,7 +61,7 @@ void print_errors(int eror_codes, ...)
  * (8) => the stack is too short for operation
  * (9) => Division by zero.
  */
-void print_errors(int eror_codes, ...)
+void print_eror(int eror_codes, ...)
 {
 	va_list args;
 	char *ops_code;
